@@ -20,7 +20,6 @@ public class TestDaoImpl implements TestDao {
     public void add(TestEntity test) {
         sessionFactory.getCurrentSession().save(test);
     }
-
     public TestEntity get(int id) {
         return sessionFactory.getCurrentSession().get(TestEntity.class,id);
     }
