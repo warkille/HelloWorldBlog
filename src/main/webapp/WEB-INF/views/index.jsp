@@ -1,4 +1,4 @@
-<%--
+﻿<%--
   Created by IntelliJ IDEA.
   User: xdzy
   Date: 2017/5/3
@@ -11,6 +11,7 @@
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%@ page isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
@@ -28,5 +29,6 @@
 </div>
 <br>
 <a href="./blog/test">Blog-Test</a>
+<a href="users/toTest.action">UserTest</a>
 </body>
 </html>
