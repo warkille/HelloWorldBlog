@@ -11,6 +11,7 @@
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%@ page isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
@@ -22,5 +23,6 @@
 <h1>首页</h1>
 <h4>以下是测试信息</h4>
 ${requestScope.test.name}--${requestScope.test.date}
+<a href="users/toTest.action">UserTest</a>
 </body>
 </html>
