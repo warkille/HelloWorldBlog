@@ -51,12 +51,35 @@ public class ArticleDaoImpl implements ArticleDao {
     }
 
     @Override
-    public List<Article> getArticleListByType(int first, int count, String type) {
-        String hql="from Article as a where a.type like :t order by id desc";
+    public List<Article> getArticleListByType(int first, int count, int type) {
+        String hql="from Article as a where a.type=:t order by id desc";
         Query<Article> query=sessionFactory.getCurrentSession().createQuery(hql,Article.class);
-        query.setParameter("t",type+"%");
+        query.setParameter("t",type);
         query.setFirstResult(first);
         query.setMaxResults(count);
         return query.list();
+    }
+
+    @Override
+    public int getDataCount() {
+        String hql="select count(*) from Article";
+        Query<Long> query=sessionFactory.getCurrentSession().createQuery(hql,Long.class);
+        return query.uniqueResult().intValue();
+    }
+
+    @Override
+    public int getDataCount(int type) {
+        String hql="select count(*) from Article a where a.type=:t";
+        Query<Long> query=sessionFactory.getCurrentSession().createQuery(hql,Long.class);
+        query.setParameter("t",type);
+        return query.uniqueResult().intValue();
+    }
+
+    @Override
+    public void addReadCount(int id) {
+        Article article=sessionFactory.getCurrentSession().get(Article.class,id);
+        int c=article.getReadCount();
+        article.setReadCount(c+1);
+        sessionFactory.getCurrentSession().save(article);
     }
 }

@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: xdzy
-  Date: 2017/5/3
-  Time: 17:44
+  Date: 17-5-15
+  Time: 下午5:06
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -11,22 +11,22 @@
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page isELIgnored="false"%>
+<%@ page isELIgnored="false" %>
 <!DOCTYPE html>
 <html>
 <head>
     <base href="<%=basePath%>">
-    <title>首页</title>
+    <title>文章</title>
 </head>
 <body>
-<h1>首页</h1>
-<div style="border: solid 1px #000;width: 400px">
-    <h3>分类浏览文章</h3>
-    <c:forEach items="${requestScope.typeList}" var="at">
-        <a href="<c:url value="${at.getUrl()}"/>">${at.typeName}</a>
+<h2 align="center">${requestScope.article.title}<small>--${requestScope.article.type}</small></h2>
+标签:
+    <c:forEach items="${requestScope.article.getTagsArray()}" var="tag">
+        ${tag}
     </c:forEach>
-</div>
 <br>
-<a href="./blog/test">Blog-Test</a>
+作者：${requestScope.article.publisher}-${requestScope.article.original}<br>
+日期：${requestScope.article.date}    阅读量:${requestScope.article.readCount}<br>
+<p>${requestScope.article.content}</p>
 </body>
 </html>
