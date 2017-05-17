@@ -21,8 +21,18 @@
 </head>
 <body>
 <h1>首页</h1>
+
 <h4>以下是测试信息</h4>
 ${requestScope.test.name}--${requestScope.test.date}
 <a href="users/toTest.action">UserTest</a>
+<div style="border: solid 1px #000;width: 400px">
+    <h3>分类浏览文章</h3>
+    <c:forEach items="${requestScope.typeList}" var="at">
+        <a href="">${at.typeName}</a>
+    </c:forEach>
+</div>
+<br>
+<a href="/blog/test">Blog-Test</a>
+
 </body>
 </html>

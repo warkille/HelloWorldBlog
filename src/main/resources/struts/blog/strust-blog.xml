@@ -5,4 +5,17 @@
         "http://struts.apache.org/dtds/struts-2.5.dtd">
 
 <struts>
+    <package name="blog-test" namespace="/blog" extends="struts-default">
+        <action name="test" class="testPageController" method="toTestPage">
+            <result>/WEB-INF/views/blog/test.jsp</result>
+        </action>
+    </package>
+    <package name="blog-aritcleType" namespace="/blog" extends="struts-default">
+        <action name="addArticleType" class="articleTypeAction" method="toFormPage">
+            <result name="page">/WEB-INF/views/blog/addArticleType.jsp</result>
+        </action>
+        <action name="addToDB" class="articleTypeAction" method="addArticleType">
+            <result type="redirectAction">../home</result>
+        </action>
+    </package>
 </struts>
