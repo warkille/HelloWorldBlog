@@ -26,6 +26,19 @@
         <a href="<c:url value="${at.getUrl()}"/>">${at.typeName}</a>
     </c:forEach>
 </div>
+<form action="blog/search" method="post">
+    <select name="type" id="type">
+        <option value="all">全部</option>
+        <option value="java">Java</option>
+        <option value="cpp">C++</option>
+    </select>
+    <select name="order" id="">
+        <option value="0">最新</option>
+        <option value="1">最热</option>
+    </select>
+    <input name="keyWord">
+    <button>提交</button>
+</form>
 <br>
 <a href="./blog/test">Blog-Test</a>
 </body>

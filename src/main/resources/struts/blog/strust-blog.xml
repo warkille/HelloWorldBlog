@@ -40,5 +40,10 @@
                 <param name="actionName">404-NotFound</param>
             </result>
         </action>
+        <action name="search" class="searchController" method="toPage">
+            <result>
+                /WEB-INF/views/blog/searchResult.jsp
+            </result>
+        </action>
     </package>
 </struts>
