@@ -13,6 +13,7 @@
 </head>
 <body>
 <form action="/blog/addToDB" method="post">
+    <label for="type">请输入新分类</label> <input type="text" name="type" id="type"><br>
     <label for="typeName">请输入新分类名称</label> <input type="text" name="typeName" id="typeName"><br>
     <button>提交</button>
 </form>

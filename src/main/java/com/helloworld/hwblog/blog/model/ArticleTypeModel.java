@@ -5,12 +5,14 @@ package com.helloworld.hwblog.blog.model;
  */
 public class ArticleTypeModel {
     private int typeNumber;
+    private String type;
     private String typeName;
 
     public ArticleTypeModel() {
     }
 
-    public ArticleTypeModel(int typeNumber, String typeName) {
+    public ArticleTypeModel(int typeNumber,String type, String typeName) {
+        this.type=type;
         this.typeNumber = typeNumber;
         this.typeName = typeName;
     }
@@ -31,11 +33,15 @@ public class ArticleTypeModel {
         this.typeName = typeName;
     }
 
-    @Override
-    public String toString() {
-        return "ArticleTypeModel{" +
-                "typeNumber=" + typeNumber +
-                ", typeName='" + typeName + '\'' +
-                '}';
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public String getUrl(){
+        return "./blog/articles.action?type="+type+"&index=1";
     }
 }

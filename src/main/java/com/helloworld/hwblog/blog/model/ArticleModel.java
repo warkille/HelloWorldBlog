@@ -1,51 +1,32 @@
-package com.helloworld.hwblog.blog.entity;
+package com.helloworld.hwblog.blog.model;
 
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Type;
-
-import javax.persistence.*;
 import java.util.Date;
 
 /**
- * Created by xdzy on 17-5-12.
+ * Created by xdzy on 17-5-13.
  */
-@Entity
-public class Article {
-    @Id
-    @GeneratedValue(generator = "aid")
-    @GenericGenerator(name = "aid",strategy = "native")
-    private int id;
-    @Column
+public class ArticleModel {
     private String title;
-    private int type;
+    private String type;
     private String tags;
     private String publisher;
     private int original;
-    @Column(columnDefinition = "TEXT")
     private String content;
-    @Column
     private Date date;
     private int readCount;
 
-    public Article() {
+    public ArticleModel() {
     }
 
-    public Article(String title, int type, String tags, String publisher, int original, String content,int readCount) {
+    public ArticleModel(String title, String type, String tags, String publisher, int original, String content, Date date, int readCount) {
         this.title = title;
         this.type = type;
         this.tags = tags;
         this.publisher = publisher;
         this.original = original;
         this.content = content;
+        this.date = date;
         this.readCount = readCount;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getTitle() {
@@ -56,11 +37,11 @@ public class Article {
         this.title = title;
     }
 
-    public int getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(int type) {
+    public void setType(String type) {
         this.type = type;
     }
 
@@ -80,8 +61,9 @@ public class Article {
         this.publisher = publisher;
     }
 
-    public int getOriginal() {
-        return original;
+    public String getOriginal() {
+        if(original==1) return "原创";
+        else return "转载";
     }
 
     public void setOriginal(int original) {
@@ -112,18 +94,7 @@ public class Article {
         this.readCount = readCount;
     }
 
-    @Override
-    public String toString() {
-        return "Article{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", type=" + type +
-                ", tags='" + tags + '\'' +
-                ", publisher='" + publisher + '\'' +
-                ", original=" + original +
-                ", context='" + content + '\'' +
-                ", date=" + date +
-                ", readCount=" + readCount +
-                '}';
+    public String[] getTagsArray(){
+        return tags.split(";");
     }
 }

@@ -9,11 +9,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <base href="<%=basePath%>">
 
 <title>Insert title here</title>
+
+<script type="text/javascript">
+// 切换验证码
+function change() {
+	document.getElementById("myimg").src = "./CreateCheckCode.action?"+ new Date().getTime();
+}</script>
 </head>
 <body>
     <form action="login" method="post">
-    	用户名<input type="text" name="username"><br>
-    	密码 <input type="password" name="password"><br>
+    	用户名<input type="text" name="username" /><br>
+    	密码 <input type="password" name="password" /><br>
+    	验证码<input type="text" name="checkcode" /><img id="myimg"
+		src="./CreateCheckCode.action" style="cursor: pointer;" onclick="change();" /><br>
     <input type="submit" value="登陆">
     </form>
 </body>
