@@ -17,7 +17,12 @@ import org.apache.struts2.ServletActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class CreateImageAction extends ActionSupport{
-	 private ByteArrayInputStream inputStream;
+	 /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private ByteArrayInputStream inputStream;
 
 	    private static int WIDTH = 60;
 
