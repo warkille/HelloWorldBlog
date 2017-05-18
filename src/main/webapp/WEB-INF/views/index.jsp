@@ -1,4 +1,4 @@
-<%--
+﻿<%--
   Created by IntelliJ IDEA.
   User: xdzy
   Date: 2017/5/3
@@ -11,6 +11,7 @@
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%@ page isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
@@ -26,7 +27,7 @@
         <a href="<c:url value="${at.getUrl()}"/>">${at.typeName}</a>
     </c:forEach>
 </div>
-<form action="blog/search" method="post">
+<form action="blog/search" method="post" onsubmit="return submitForm()">
     <select name="type" id="type">
         <option value="all">全部</option>
         <option value="java">Java</option>
@@ -36,10 +37,18 @@
         <option value="0">最新</option>
         <option value="1">最热</option>
     </select>
-    <input name="keyWord">
+    <input name="keyWord" id="keyWord">
     <button>提交</button>
 </form>
 <br>
 <a href="./blog/test">Blog-Test</a>
+<a href="users/toTest.action">UserTest</a>
+<script>
+    function submitForm() {
+        var keyWord=document.getElementById("keyWord").value;
+        document.getElementById("keyWord").value=encodeURI(keyWord);
+        return true;
+    }
+</script>
 </body>
 </html>

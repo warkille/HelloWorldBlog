@@ -57,7 +57,6 @@ public class SearchController {
     public String toPage(){
         //System.out.println(type+" "+index+" "+order+" "+keyWord);
         PageModel<ArticleItemModel> result=searchService.search(keyWord,type,order,index,10);
-        System.out.println(result.getItems().size());
         ServletActionContext.getRequest().setAttribute("result",result);
         return "success";
     }

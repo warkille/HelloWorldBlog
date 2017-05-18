@@ -10,6 +10,8 @@ import com.helloworld.hwblog.common.model.PageModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -33,6 +35,11 @@ public class SearchServiceImpl implements SearchService{
     }
     @Override
     public PageModel<ArticleItemModel> search(String keyWord, String type, int order, int index, int count) {
+        try {
+            keyWord= URLDecoder.decode(keyWord,"utf-8");
+        } catch (UnsupportedEncodingException e) {
+        }
+        if(keyWord.length()>35) keyWord=keyWord.substring(0,35);
         PageModel<ArticleItemModel> page=new PageModel<>();
         page.setIndex(index);
         page.setItemsCount(count);
@@ -45,7 +52,6 @@ public class SearchServiceImpl implements SearchService{
             articles=order==0?articleDao.getArticleListByKeyWord((index-1)*count,count,keyWord):articleDao.getArticleListByKeyWord_Hot((index-1)*count,count,keyWord);
             page.setAllItemCount(articleDao.getDataCount(keyWord));
             page.setPageName("全部");
-            System.out.println(order+"order");
         }else{
             ArticleType articleType=articleTypeDao.getArticleType(type);
             if(articleType==null) return null;

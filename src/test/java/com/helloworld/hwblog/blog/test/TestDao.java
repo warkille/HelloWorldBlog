@@ -35,9 +35,11 @@ public class TestDao {
 
     @Test
     public void test2(){
-        Article article=new Article("测试文章1",1,"c++;服务器",
-                "xdzy",1,"测试文章内容c++",0);
-        articleDao.addArticle(article);
+        for(int i=0;i<31;i++){
+            Article article=new Article("测试文章x"+i,1,"测试标签",
+                    "xdzy",1,"测试文章内容"+i,0);
+            articleDao.addArticle(article);
+        }
         //System.out.println(articleDao.getArticle(1));
        // System.out.println(articleDao.getArticleList(0,2));
         //System.out.println(articleDao.getArticleListByType(0,2,"1-"));

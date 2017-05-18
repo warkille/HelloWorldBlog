@@ -112,12 +112,23 @@ public class ArticleDaoImpl implements ArticleDao {
 
     @Override
     public List<Article> getArticleListByKeyWord_Hot(int first, int count, String keyWord) {
-        return null;
+        String hql="from Article a where a.title like :k or a.content like :k or a.tags like :k order by readCount desc";
+        Query<Article> query=sessionFactory.getCurrentSession().createQuery(hql,Article.class);
+        query.setFirstResult(first);
+        query.setMaxResults(count);
+        query.setParameter("k","%"+keyWord+"%");
+        return query.list();
     }
 
     @Override
     public List<Article> getArticleListByKeyWord_Hot(int first, int count, int type, String keyWord) {
-        return null;
+        String hql="from Article a where (a.title like :k or a.content like :k or a.tags like :k) and a.type=:t order by readCount desc";
+        Query<Article> query=sessionFactory.getCurrentSession().createQuery(hql,Article.class);
+        query.setFirstResult(first);
+        query.setMaxResults(count);
+        query.setParameter("k","%"+keyWord+"%");
+        query.setParameter("t",type);
+        return query.list();
     }
 
     @Override
@@ -148,7 +159,7 @@ public class ArticleDaoImpl implements ArticleDao {
         String hql="select count(*) from Article a where (a.title like :k or a.content like :k or a.tags like :k) and a.type=:t";
         Query<Long> query=sessionFactory.getCurrentSession().createQuery(hql,Long.class);
         query.setParameter("t",type);
-        query.setParameter("k",keyWord);
+        query.setParameter("k","%"+keyWord+"%");
         return query.uniqueResult().intValue();
     }
 

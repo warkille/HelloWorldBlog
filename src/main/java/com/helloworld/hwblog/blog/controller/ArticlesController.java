@@ -64,4 +64,9 @@ public class ArticlesController {
         request.setAttribute("pageModel",model);
         return "success";
     }
+
+    public String myArticles(){
+
+        return "success";
+    }
 }

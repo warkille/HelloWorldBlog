@@ -19,6 +19,12 @@
     <title>搜索结果</title>
 </head>
 <body>
+<h1 align="center">搜索结果</h1>
+<label for="order">排序：</label>
+<select name="order" id="order" onchange="change(this)">
+    <option value="0">最新</option>
+    <option value="1">热门</option>
+</select>
 <ul>
     <c:forEach items="${requestScope.result.items}" var="item">
         <li>
@@ -36,5 +42,29 @@
         </li>
     </c:forEach>
 </ul>
+<button onclick="turnpage(1)">首页</button>
+<c:forEach begin="1" end="${requestScope.result.getAllPageCount()}" step="1" var="i">
+    <button onclick="turnpage(${i})">${i}</button>
+</c:forEach>
+<button onclick="turnpage(${requestScope.result.getAllPageCount()})">末页</button>
+<script>
+    window.onload=function () {
+        var orderNumber=${requestScope.result.order};
+        var s=document.getElementById("order");
+        s[orderNumber].selected=true;
+    }
+    function change(s) {
+        var item=s.selectedIndex;
+        var url="./blog/search?type=${requestScope.result.pageType}&index=${requestScope.result.index}&keyWord=${requestScope.result.keyWord}&order="+item;
+        window.location.href=encodeURI(url);
+    }
+    function turnpage(index) {
+        var url="./blog/search?type=${requestScope.result.pageType}"+
+            "&index="+index+"&keyWord=${requestScope.result.keyWord}&order="+
+            "${requestScope.result.order}";
+            //alert(encodeURI(url));
+        window.location.href=encodeURI(url);
+    }
+</script>
 </body>
 </html>
