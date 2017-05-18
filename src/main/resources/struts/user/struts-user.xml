@@ -3,11 +3,9 @@
 <!DOCTYPE struts PUBLIC
         "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
         "http://struts.apache.org/dtds/struts-2.5.dtd">
-
 <struts>
-    <package name="user" namespace="/" extends="struts-default">
-      
-        <action name="registeone" class="com.helloworld.hwblog.user.controller.RegistoneAction" method="registeone">
+ <package name="user" namespace="/users" extends="struts-default">
+<action name="registeone" class="com.helloworld.hwblog.user.controller.RegistoneAction" method="registeone">
              <result name="error">/WEB-INF/views/users/error.jsp</result>  
             <result name="success">/WEB-INF/views/users/registetwo.jsp</result> 
         </action>
@@ -16,8 +14,10 @@
         </action>
         
           <action name="login" class="com.helloworld.hwblog.user.controller.LoginAction" method="login">
-           <result type="redirectAction">../home.action</result> 
-          <!--  <result name="success">home.action</result> -->  
+           <result type="redirectAction">
+           <param name="namespace">/</param>
+           <param name="actionName">home</param>
+           </result> 
             <result name="error">/WEB-INF/views/users/error.jsp</result>  
         </action>
         
@@ -27,5 +27,17 @@
          <action name="toTest" class="com.helloworld.hwblog.user.controller.TestPageAction" method="toTest">
              <result >/WEB-INF/views/users/test.jsp</result>  
         </action>
-    </package>
+        <action name="CreateCheckCode" class="com.helloworld.hwblog.user.util.CreateImageAction">
+         <result name="success" type="stream">
+                    <param name="contentType">image/jpeg</param>
+                    <param name="inputName">inputStream</param>
+          </result>
+        </action>
+
+
+
+</package>
+
+
+
 </struts>
