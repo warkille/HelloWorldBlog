@@ -24,7 +24,7 @@ public class UserInfoDaoImpl implements UserInfoDao {
 	@Override
 	public void deleteInUser(UserInfo user) {
 		// TODO Auto-generated method stub
-		
+		 sessionFactory.getCurrentSession().delete(user);
 	}
 
 	@Override
@@ -41,6 +41,7 @@ public class UserInfoDaoImpl implements UserInfoDao {
 	@Override
 	public void updateInUser(UserInfo userEntity) {
 		// TODO Auto-generated method stub
+		 sessionFactory.getCurrentSession().update(userEntity);
 		
 	}
 
