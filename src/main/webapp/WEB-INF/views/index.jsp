@@ -1,4 +1,4 @@
-<%--
+﻿<%--
   Created by IntelliJ IDEA.
   User: xdzy
   Date: 2017/5/3
@@ -11,6 +11,7 @@
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%@ page isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
@@ -20,6 +21,10 @@
 </head>
 <body>
 <h1>首页</h1>
+
+<h4>以下是测试信息</h4>
+${requestScope.test.name}--${requestScope.test.date}
+<a href="users/toTest.action">UserTest</a>
 <div style="border: solid 1px #000;width: 400px">
     <h3>分类浏览文章</h3>
     <c:forEach items="${requestScope.typeList}" var="at">
@@ -27,6 +32,12 @@
     </c:forEach>
 </div>
 <br>
+<<<<<<< HEAD
+<a href="/blog/test">Blog-Test</a>
+
+=======
 <a href="./blog/test">Blog-Test</a>
+<a href="users/toTest.action">UserTest</a>
+>>>>>>> dev
 </body>
 </html>
