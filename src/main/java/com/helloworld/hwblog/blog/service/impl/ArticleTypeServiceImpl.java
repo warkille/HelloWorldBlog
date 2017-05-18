@@ -26,7 +26,7 @@ public class ArticleTypeServiceImpl implements ArticleTypeService {
     public boolean addArticleType(ArticleTypeModel model) {
         ArticleType articleType=articleTypeDao.getArticleType(model.getTypeName());
         if(articleType!=null) return false;
-        articleType=new ArticleType(model.getTypeName());
+        articleType=new ArticleType(model.getType(),model.getTypeName());
         articleTypeDao.addArticleType(articleType);
         return true;
     }
@@ -36,7 +36,7 @@ public class ArticleTypeServiceImpl implements ArticleTypeService {
         List<ArticleType> list=articleTypeDao.getArticleTypes();
         List<ArticleTypeModel> modelList=new ArrayList<>();
         for(ArticleType a:list){
-            modelList.add(new ArticleTypeModel(a.getId(),a.getType()));
+            modelList.add(new ArticleTypeModel(a.getId(),a.getType(),a.getTypeName()));
         }
         return modelList;
     }

@@ -18,4 +18,27 @@
             <result type="redirectAction">../home</result>
         </action>
     </package>
+    <package name="blog-article" namespace="/blog" extends="struts-default">
+        <action name="addArticle" class="addArticleController" method="toPage">
+            <result>/WEB-INF/views/blog/addArticle.jsp</result>
+        </action>
+        <action name="save" class="addArticleController" method="save">
+            <result type="redirectAction">../home</result>
+        </action>
+        <action name="articles" class="articlesController" method="toPage">
+            <result>/WEB-INF/views/blog/articles.jsp</result>
+            <result name="error" type="redirectAction">
+                <param name="namespace">/</param>
+                <param name="actionName">404-NotFound</param>
+            </result>
+        </action>
+        <action name="article_*" class="articleController" method="showArticle">
+            <param name="aid">{1}</param>
+            <result>/WEB-INF/views/blog/article.jsp</result>
+            <result name="error" type="redirectAction">
+                <param name="namespace">/</param>
+                <param name="actionName">404-NotFound</param>
+            </result>
+        </action>
+    </package>
 </struts>

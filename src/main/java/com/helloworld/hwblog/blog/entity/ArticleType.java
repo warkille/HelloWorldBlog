@@ -16,11 +16,13 @@ public class ArticleType {
     @GenericGenerator(name = "atid",strategy = "native")
     private int id;
     private String type;
+    private String typeName;
 
     public ArticleType() {
     }
 
-    public ArticleType(String type) {
+    public ArticleType(String type,String typeName) {
+        this.typeName=typeName;
         this.type = type;
     }
 
@@ -38,5 +40,13 @@ public class ArticleType {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getTypeName() {
+        return typeName;
+    }
+
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
     }
 }

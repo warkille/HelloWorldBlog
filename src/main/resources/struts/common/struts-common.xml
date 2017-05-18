@@ -10,5 +10,8 @@
         <action name="home" class="com.helloworld.hwblog.common.controller.HomeAction" method="home">
             <result>/WEB-INF/views/index.jsp</result>
         </action>
+        <action name="404-NotFound" class="notFoundController" method="toPage">
+            <result >/html/404-page.html</result>
+        </action>
     </package>
 </struts>

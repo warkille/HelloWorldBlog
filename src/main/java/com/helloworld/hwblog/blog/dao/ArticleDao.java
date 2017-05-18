@@ -13,5 +13,8 @@ public interface ArticleDao {
     void updateArticle(Article article);
     void deleteArticle(int id);
     List<Article> getArticleList(int first,int count);
-    List<Article> getArticleListByType(int first,int count,String type);
+    List<Article> getArticleListByType(int first,int count,int type);
+    int getDataCount();
+    int getDataCount(int type);
+    void addReadCount(int id);
 }
