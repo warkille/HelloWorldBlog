@@ -32,9 +32,9 @@ public class UserSeviceImpl implements UserService {
 	@Override
 	public boolean regist(RegisteoneModel resgite) {
 		// TODO Auto-generated method stub
-		//�ж������Ƿ���ͬ
+		//判断重复密码是否相同
 		if(!resgite.getPassword().equals(resgite.getRepassword())) return false;
-		//�ж��Ƿ��Ѿ�ע��
+		//是否同名
 		if(useraccoundao.getAcUser(resgite.getUsername(),resgite.getPassword())!=null) return false;
 		
 		// 1 �ж���֤���Ƿ���ȷ
@@ -49,21 +49,20 @@ public class UserSeviceImpl implements UserService {
 					return false;
 				} */
 				else {
-					// ��֤��ok
-					// 2 ��װform���ݵ� javabean
+					
 					UserAccount useraccount=new UserAccount();
 					useraccount.setUsername(resgite.getUsername());
 					useraccount.setPassword(resgite.getPassword());
 					useraccount.setEmail(resgite.getEmail());		
 					useraccoundao.addAcUser(useraccount);
-					//��ʼ��һ��userinfo
-					UserInfo userinfo=new UserInfo( resgite.getUsername(), "ͷ��", 1,
-							new Date(), "location blog", null, "����",
+					//
+					UserInfo userinfo=new UserInfo( resgite.getUsername(), "icon_phtot", 1,
+							new Date(), "location blog", null, "basketball",
 							resgite.getUsername(),0);
 					  userinfodao.addInUser(userinfo);
-		             //����username��userinfo��������Ϣ,���Ҵ���session��
+		            
 		              userinfo= userinfodao.getInUser(resgite.getUsername());
-		              //����Ϣ������session��
+		           
 		              ServletActionContext.getRequest().setAttribute("reginfo", userinfo);
 		               return true;
 					}
@@ -75,7 +74,10 @@ public class UserSeviceImpl implements UserService {
 	@Override
 	public boolean regist2(RegistetwoModel resgite) {
 		// TODO Auto-generated method stub
-		return false;
+		userinfodao.updateInUser(new UserInfo(resgite.getNickName(),resgite.getIcon(),resgite.getSex(),
+				resgite.getBirthday(),resgite.getAddress(),resgite.getQqAcount(),
+				resgite.getHobby()));
+		return true;
 	}
 
 	@Override

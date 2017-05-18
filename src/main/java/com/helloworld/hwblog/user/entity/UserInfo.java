@@ -99,6 +99,18 @@ public class UserInfo {
 		this.username = username;
 		this.subNumber = subNumber;
 	}
+	
+	public UserInfo(String nickName, String icon, int sex, Date birthday, String address, String qqAcount,
+			String hobby) {
+		super();
+		this.nickName = nickName;
+		this.icon = icon;
+		this.sex = sex;
+		this.birthday = birthday;
+		this.address = address;
+		this.qqAcount = qqAcount;
+		this.hobby = hobby;
+	}
 	public UserInfo() {
 		super();
 		// TODO Auto-generated constructor stub

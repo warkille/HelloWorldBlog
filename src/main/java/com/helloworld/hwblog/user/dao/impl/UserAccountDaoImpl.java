@@ -25,6 +25,7 @@ public class UserAccountDaoImpl implements UserAccountDao {
 	@Override
 	public void deleteAcUser(UserAccount user) {
 		// TODO Auto-generated method stub
+		 sessionFactory.getCurrentSession().delete(user);
 		
 	}
 
@@ -41,6 +42,7 @@ public class UserAccountDaoImpl implements UserAccountDao {
 	@Override
 	public void updateAcUser(UserAccount userEntity) {
 		// TODO Auto-generated method stub
+		 sessionFactory.getCurrentSession().update(userEntity);
 		
 	}
 
