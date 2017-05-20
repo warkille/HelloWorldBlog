@@ -24,7 +24,7 @@
 
 <h4>以下是测试信息</h4>
 ${requestScope.test.name}--${requestScope.test.date}
-<a href="users/toTest.action">UserTest</a>
+
 <div style="border: solid 1px #000;width: 400px">
     <h3>分类浏览文章</h3>
     <c:forEach items="${requestScope.typeList}" var="at">
@@ -32,12 +32,9 @@ ${requestScope.test.name}--${requestScope.test.date}
     </c:forEach>
 </div>
 <br>
-<<<<<<< HEAD
-<a href="/blog/test">Blog-Test</a>
 
-=======
 <a href="./blog/test">Blog-Test</a>
-<a href="users/toTest.action">UserTest</a>
->>>>>>> dev
+<a href="./user/test">UserTest</a>
+
 </body>
 </html>
