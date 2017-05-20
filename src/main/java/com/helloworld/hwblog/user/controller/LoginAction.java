@@ -1,5 +1,8 @@
 package com.helloworld.hwblog.user.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -22,7 +25,12 @@ public class LoginAction implements ModelDriven<LoginModel> {
    public String login(){
 	
 	if(usersevice.login(logmodel))
+	{
+		 HttpServletRequest request= ServletActionContext.getRequest();
+		 request.getSession().setAttribute("loginUser", logmodel);
 		return "success";
+	}
+		
 	else
 	{
 	return "error";

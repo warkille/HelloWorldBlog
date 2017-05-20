@@ -2,6 +2,8 @@ package com.helloworld.hwblog.user.service.impl;
 
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -62,8 +64,9 @@ public class UserSeviceImpl implements UserService {
 					  userinfodao.addInUser(userinfo);
 		            
 		              userinfo= userinfodao.getInUser(resgite.getUsername());
-		           
-		              ServletActionContext.getRequest().setAttribute("reginfo", userinfo);
+		              HttpServletRequest request= ServletActionContext.getRequest();
+		              request.getSession().setAttribute("reginfo", userinfo);
+		              
 		               return true;
 					}
 		
@@ -85,15 +88,12 @@ public class UserSeviceImpl implements UserService {
 		 // 传递用户名 和密码 到DAO
 		//return userdao.getUser(login.getUsername(),login.getPassword());
 		 UserAccount user=useraccoundao.getAcUser(login.getUsername(),login.getPassword());
-		 ServletActionContext.getRequest().setAttribute("userac", user);
-	        if(user==null) 
-	        	{
-	        	return false;
-	        	}
-	        	
-	        else{
-	        return true;
-	        }
+		 if(user!=null)
+		 return true;
+		 else {
+			return false;
+		}
+	       
 	}
 
 }

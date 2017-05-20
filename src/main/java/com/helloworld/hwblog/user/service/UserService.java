@@ -5,12 +5,12 @@ import com.helloworld.hwblog.user.model.RegisteoneModel;
 import com.helloworld.hwblog.user.model.RegistetwoModel;
 
 public interface UserService {
-	//ÓÃ»§×¢²á
+	//ï¿½Ã»ï¿½×¢ï¿½ï¿½
 	public boolean regist(RegisteoneModel resgite);
-	//×¢²á2
+	//×¢ï¿½ï¿½2
 	public boolean regist2(RegistetwoModel resgite);
 	
-	//ÓÃ»§µÇÂ¼
+	//ï¿½Ã»ï¿½ï¿½ï¿½Â¼
 	public  boolean login(LoginModel login);
 
 
