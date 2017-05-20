@@ -4,14 +4,19 @@ import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity(name="UserInfo")
 public class UserInfo {
 	@Id
+	@GeneratedValue(generator = "uid")
+    @GenericGenerator(name = "uid",strategy = "native")
 	private int id;
 	private String nickName;
 	private String icon;
@@ -117,3 +122,4 @@ public class UserInfo {
 	}
 	
 }
+
