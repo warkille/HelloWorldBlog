@@ -25,7 +25,6 @@
 
 <h4>以下是测试信息</h4>
 ${requestScope.test.name}--${requestScope.test.date}
-
 <div style="border: solid 1px #000;width: 400px">
     <h3>分类浏览文章</h3>
     <c:forEach items="${requestScope.typeList}" var="at">
