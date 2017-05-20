@@ -11,21 +11,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <title>Insert title here</title>
 
-<script type="text/javascript">
+<%-- <script type="text/javascript">
 // 切换验证码
-function change() {
+ function change() {
 
-	document.getElementById("myimg").src = "./user/CreateCheckCode.action?"+ new Date().getTime();
+	document.getElementById("myimg").src = "/user/CreateCheckCode.action?"+ new Date().getTime();
 
-}</script>
+}</script> --%>
 </head>
 <body>
-    <form action="login" method="post">
+    <form action="./user/Login.action" method="post">
     	用户名<input type="text" name="username" /><br>
     	密码 <input type="password" name="password" /><br>
-    	验证码<input type="text" name="checkcode" />
+    	<!--  验证码<input type="text" name="checkcode" />
     	<img id="myimg"
-		src="./user/CreateCheckCode.action" style="cursor: pointer;" onclick="change();" /><br>
+		src="/user/CreateCheckCode.action" style="cursor: pointer;" onclick="change();" /><br> -->
     <input type="submit" value="登陆">
     </form>
 </body>

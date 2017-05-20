@@ -39,15 +39,13 @@ public class UserSeviceImpl implements UserService {
 		//是否同名
 		if(useraccoundao.getAcUser(resgite.getUsername(),resgite.getPassword())!=null) return false;
 		
-		// 1 �ж���֤���Ƿ���ȷ
-				// ��ÿͻ�����֤��
-				// ���session��֤��
+		// 
 				/*String checkcode_session = (String) request.getSession().getAttribute(
 						"checkcode_session");
 				request.getSession().removeAttribute("checkcode_session");
 				if (resgite.getCheckcode() == null || !resgite.getCheckcode().equals(checkcode_session)) {
-					// ��֤�����
-					request.setAttribute("msg", "��֤���������");
+					// 验证码错误
+					request.setAttribute("msg", "验证码错误");
 					return false;
 				} */
 				else {
@@ -68,7 +66,6 @@ public class UserSeviceImpl implements UserService {
 		              HttpServletRequest request= ServletActionContext.getRequest();
 		              request.getSession().setAttribute("reginfo", userinfo);
 		         
-
 		               return true;
 					}
 		
@@ -79,9 +76,15 @@ public class UserSeviceImpl implements UserService {
 	@Override
 	public boolean regist2(RegistetwoModel resgite) {
 		// TODO Auto-generated method stub
+		//获取第一个model
+		HttpServletRequest request= ServletActionContext.getRequest();
+        request.getSession().getAttribute("reginfo");
+        //把获得的session变为一个对象
+        UserInfo userinfotwo=(UserInfo)request.getSession().getAttribute("reginfo");
 		userinfodao.updateInUser(new UserInfo(resgite.getNickName(),resgite.getIcon(),resgite.getSex(),
 				resgite.getBirthday(),resgite.getAddress(),resgite.getQqAcount(),
-				resgite.getHobby()));
+				resgite.getHobby(),userinfotwo.getUsername(),0));
+		System.out.println("userInfo"+userinfotwo);
 		return true;
 	}
 

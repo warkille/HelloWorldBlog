@@ -36,7 +36,7 @@ public class LoginAction implements ModelDriven<LoginModel> {
 	return "error";
 	}
  }
-   public String toLogin(){
+   public String toLoginPage(){
 	   return "tolpage";
    }
 }

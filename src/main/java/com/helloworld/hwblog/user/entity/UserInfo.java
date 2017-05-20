@@ -2,11 +2,11 @@ package com.helloworld.hwblog.user.entity;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -26,11 +26,10 @@ public class UserInfo {
 	private String address;
 	private String qqAcount;
 	private String hobby;
-	
 	private String username;
 	private int subNumber;
-
-    public int getId() {
+	
+	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
