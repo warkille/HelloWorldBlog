@@ -33,8 +33,8 @@ ${requestScope.test.name}--${requestScope.test.date}
 </div>
 <br>
 
-<a href="/blog/test">Blog-Test</a>
-<a href="/user/test">UserTest</a>
+<a href="./blog/test">Blog-Test</a>
+<a href="./user/test">UserTest</a>
 
 </body>
 </html>
