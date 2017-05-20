@@ -10,10 +10,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <base href="<%=basePath%>">
 
 <title>Insert title here</title>
+
 <script type="text/javascript">
 // 切换验证码
 function change() {
+
 	document.getElementById("myimg").src = "./user/CreateCheckCode.action?"+ new Date().getTime();
+
 }</script>
 </head>
 <body>
@@ -23,7 +26,6 @@ function change() {
     	验证码<input type="text" name="checkcode" />
     	<img id="myimg"
 		src="./user/CreateCheckCode.action" style="cursor: pointer;" onclick="change();" /><br>
-		
     <input type="submit" value="登陆">
     </form>
 </body>

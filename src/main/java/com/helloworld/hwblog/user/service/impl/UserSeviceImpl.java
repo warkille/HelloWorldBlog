@@ -64,9 +64,11 @@ public class UserSeviceImpl implements UserService {
 					  userinfodao.addInUser(userinfo);
 		            
 		              userinfo= userinfodao.getInUser(resgite.getUsername());
+
 		              HttpServletRequest request= ServletActionContext.getRequest();
 		              request.getSession().setAttribute("reginfo", userinfo);
-		              
+		         
+
 		               return true;
 					}
 		
