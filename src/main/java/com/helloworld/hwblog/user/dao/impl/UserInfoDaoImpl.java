@@ -2,10 +2,11 @@ package com.helloworld.hwblog.user.dao.impl;
 
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.helloworld.hwblog.blog.entity.ArticleType;
+
 import com.helloworld.hwblog.user.dao.UserInfoDao;
 import com.helloworld.hwblog.user.entity.UserInfo;
 @Repository
@@ -29,7 +30,7 @@ public class UserInfoDaoImpl implements UserInfoDao {
 	}
 
 	@Override
-	public UserInfo getInUser(String username ) {
+	public UserInfo getInUser(String username) {
 		// TODO Auto-generated method stub
 		 String hql="from UserInfo as u where u.username=:uname";
 	        Query query=sessionFactory.getCurrentSession().createQuery(hql);
@@ -42,15 +43,18 @@ public class UserInfoDaoImpl implements UserInfoDao {
 	@Override
 	public void updateInUser(UserInfo userEntity) {
 		// TODO Auto-generated method stub0
-		//从数据库里面查询出来
-		UserInfoDaoImpl users=new UserInfoDaoImpl();
-		UserInfo userinfo=users.getInUser(userEntity.getUsername());
+		UserInfo userinfo=getInUser(userEntity.getUsername());
 		//更改内容
 		userinfo.setAddress(userEntity.getAddress());
-		 sessionFactory.getCurrentSession().update(userinfo);
+		userinfo.setBirthday(userEntity.getBirthday());
+		userinfo.setHobby(userEntity.getHobby());
+		userinfo.setIcon(userEntity.getIcon());
+		userinfo.setNickName(userEntity.getNickName());
+		userinfo.setQqAcount(userEntity.getQqAcount());
+		userinfo.setSex(userEntity.getSex());
+		sessionFactory.getCurrentSession().update(userinfo);
 		
 	}
-
 
 
 }

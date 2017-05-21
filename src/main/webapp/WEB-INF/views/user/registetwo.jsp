@@ -11,7 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>Insert title here</title>
 </head>
 <body>
-<form action="./user/registetwo" method="post" >
+<form action="./user/registetwo.action" method="post" >
     <!--  <input type="hidden" name="method:myregiste2"> -->
     	昵称<input type="text" name="nickName" value="${reginfo.nickName}"><br>
     	头像<input type="text" name="icon" value="${reginfo.icon}" ><br>

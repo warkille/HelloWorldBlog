@@ -77,6 +77,7 @@ public class UserSeviceImpl implements UserService {
 	public boolean regist2(RegistetwoModel resgite) {
 		// TODO Auto-generated method stub
 		//获取第一个model
+	
 		HttpServletRequest request= ServletActionContext.getRequest();
         request.getSession().getAttribute("reginfo");
         //把获得的session变为一个对象
@@ -84,7 +85,7 @@ public class UserSeviceImpl implements UserService {
 		userinfodao.updateInUser(new UserInfo(resgite.getNickName(),resgite.getIcon(),resgite.getSex(),
 				resgite.getBirthday(),resgite.getAddress(),resgite.getQqAcount(),
 				resgite.getHobby(),userinfotwo.getUsername(),0));
-		System.out.println("userInfo"+userinfotwo);
+		//System.out.println("userInfo"+userinfotwo);
 		return true;
 	}
 
