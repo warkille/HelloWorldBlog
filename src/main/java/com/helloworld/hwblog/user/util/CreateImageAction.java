@@ -22,6 +22,10 @@ public class CreateImageAction extends ActionSupport{
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * 
+	 */
+
 	private ByteArrayInputStream inputStream;
 
 	    private static int WIDTH = 60;
@@ -106,13 +110,13 @@ public class CreateImageAction extends ActionSupport{
 	    {
 	        HttpServletResponse response = ServletActionContext.getResponse();
 
-	        // 设置浏览器不要缓存此图片
+	      /*  // 设置浏览器不要缓存此图片
 	        response.setHeader("Pragma", "no-cache");
 
 	        response.setHeader("Cache-Control", "no-cache");
 
 	        response.setDateHeader("Expires", 0);
-
+*/
 	        String rands = createRandom();
 
 	        BufferedImage image = new BufferedImage(WIDTH, HEIGHT,

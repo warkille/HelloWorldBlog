@@ -3,6 +3,7 @@ package com.helloworld.hwblog.common.dao.impl;
 import com.helloworld.hwblog.common.dao.TestDao;
 import com.helloworld.hwblog.common.entity.TestEntity;
 import org.hibernate.SessionFactory;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -23,4 +24,5 @@ public class TestDaoImpl implements TestDao {
     public TestEntity get(int id) {
         return sessionFactory.getCurrentSession().get(TestEntity.class,id);
     }
+  
 }
