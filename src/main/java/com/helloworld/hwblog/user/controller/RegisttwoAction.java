@@ -28,8 +28,9 @@ public void setRegiste(RegistetwoModel registe) {
 		return registe;
 	} 
 	public String registetwo(){
-		
+		System.out.println("resgist"+registe);
 		usersevice.regist2(registe);
+		//System.out.println("resgist2"+registe);
 		return "success";
 	}
 }
