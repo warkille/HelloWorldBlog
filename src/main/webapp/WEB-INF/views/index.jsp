@@ -20,21 +20,37 @@
     <title>首页</title>
 </head>
 <body>
-
 <h1>首页</h1> <c:if test="${not empty loginUser}">欢迎你${loginUser.username}</c:if>
-
-<h4>以下是测试信息</h4>
-${requestScope.test.name}--${requestScope.test.date}
 <div style="border: solid 1px #000;width: 400px">
     <h3>分类浏览文章</h3>
     <c:forEach items="${requestScope.typeList}" var="at">
         <a href="<c:url value="${at.getUrl()}"/>">${at.typeName}</a>
     </c:forEach>
 </div>
+<form action="blog/search" method="post" onsubmit="return submitForm()">
+    <select name="type" id="type">
+        <option value="all">全部</option>
+        <option value="java">Java</option>
+        <option value="cpp">C++</option>
+    </select>
+    <select name="order" id="">
+        <option value="0">最新</option>
+        <option value="1">最热</option>
+    </select>
+    <input name="keyWord" id="keyWord">
+    <button>提交</button>
+</form>
 <br>
-
 <a href="./blog/test">Blog-Test</a>
+
 <a href="./user/test">UserTest</a>
+<script>
+    function submitForm() {
+        var keyWord=document.getElementById("keyWord").value;
+        document.getElementById("keyWord").value=encodeURI(keyWord);
+        return true;
+    }
+</script>
 
 </body>
 </html>

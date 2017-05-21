@@ -12,7 +12,7 @@
     
  <package name="user" namespace="/user" extends="struts-default">
         <action name="registeone" class="com.helloworld.hwblog.user.controller.RegistoneAction" method="registeone">
-             <result name="error">/WEB-INF/views/user/error.jsp</result>  
+             <result name="error">/WEB-INF/views/user/registeone.jsp</result>  
             <result name="success">/WEB-INF/views/user/registetwo.jsp</result> 
         </action>
           <action name="toRegiste" class="com.helloworld.hwblog.user.controller.RegistoneAction" method="toPage">
@@ -27,7 +27,7 @@
             <result name="error">/WEB-INF/views/user/login.jsp</result>  
         </action>
         
-        <action name="toLogin" class="com.helloworld.hwblog.user.controller.LoginAction" method="toLogin">
+        <action name="toLogin" class="com.helloworld.hwblog.user.controller.LoginAction" method="toLoginPage">
              <result name="tolpage">/WEB-INF/views/user/login.jsp</result>  
         </action>
         
@@ -39,12 +39,13 @@
         <result name="error">/WEB-INF/views/user/error.jsp</result>
         </action>
 
-        <action name="CreateCheckCode" class="com.helloworld.hwblog.user.util.createImageAction" method="execute">
+<!--         <action name="CreateCheckCode" class="com.helloworld.hwblog.user.util.createImageAction" >
          <result name="success" type="stream">
                     <param name="contentType">image/jpeg</param>
                     <param name="inputName">inputStream</param>
+                   
           </result>
-        </action>
+        </action>  -->
 </package>
 
 

@@ -5,6 +5,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.helloworld.hwblog.blog.entity.ArticleType;
 import com.helloworld.hwblog.user.dao.UserInfoDao;
 import com.helloworld.hwblog.user.entity.UserInfo;
 @Repository
@@ -40,8 +41,13 @@ public class UserInfoDaoImpl implements UserInfoDao {
 
 	@Override
 	public void updateInUser(UserInfo userEntity) {
-		// TODO Auto-generated method stub
-		 sessionFactory.getCurrentSession().update(userEntity);
+		// TODO Auto-generated method stub0
+		//从数据库里面查询出来
+		UserInfoDaoImpl users=new UserInfoDaoImpl();
+		UserInfo userinfo=users.getInUser(userEntity.getUsername());
+		//更改内容
+		userinfo.setAddress(userEntity.getAddress());
+		 sessionFactory.getCurrentSession().update(userinfo);
 		
 	}
 
