@@ -28,8 +28,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
     	<!-- 验证码<input type="text" name="checkcode" />
     	<img id="myimg"
-		src="./user/CreateCheckCode.action" style="cursor: pointer;" onclick="change();" /><br>
-    <input type="submit" value="登陆"> -->
+		src="./user/CreateCheckCode.action" style="cursor: pointer;" onclick="change();" /><br>-->
+    <input type="submit" value="登陆">
 
     </form>
 </body>
