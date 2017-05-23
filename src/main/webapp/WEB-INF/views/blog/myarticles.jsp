@@ -25,7 +25,8 @@
             <a href="${item.getArticleLink()}">${item.title}</a>
                 ${item.date}
             <br>
-            <a href="./blog/delete?aid=${item.aId}">删除</a><a href="">修改</a>
+            <a href="./blog/delete?aid=${item.aId}">删除</a>
+            <a href="./blog/updatePage?aid=${item.aId}">修改</a>
             <br>
             <p>${item.detail}</p>
             <br>

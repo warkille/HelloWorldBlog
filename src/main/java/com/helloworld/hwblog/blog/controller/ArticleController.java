@@ -4,6 +4,7 @@ import com.helloworld.hwblog.blog.entity.Article;
 import com.helloworld.hwblog.blog.model.ArticleModel;
 import com.helloworld.hwblog.blog.model.UpdateModel;
 import com.helloworld.hwblog.blog.service.ArticleService;
+import com.helloworld.hwblog.blog.service.ArticleTypeService;
 import com.helloworld.hwblog.blog.service.CommentService;
 import com.opensymphony.xwork2.ModelDriven;
 import org.apache.struts2.ServletActionContext;
@@ -21,7 +22,12 @@ public class ArticleController implements ModelDriven<UpdateModel>{
     private CommentService commentService;
     private String aid;
     private UpdateModel updateModel;
+    @Autowired
+    private ArticleTypeService articleTypeService;
 
+    public void setArticleTypeService(ArticleTypeService articleTypeService) {
+        this.articleTypeService = articleTypeService;
+    }
     public void setCommentService(CommentService commentService) {
         this.commentService = commentService;
     }
@@ -82,6 +88,7 @@ public class ArticleController implements ModelDriven<UpdateModel>{
             return "success";
         }
         Article article=articleService.getArticleTemp(id);
+        ServletActionContext.getRequest().setAttribute("typeList",articleTypeService.getArticleTypeList());
         ServletActionContext.getRequest().getSession().setAttribute("articleTemp",article);
         return "success";
     }
