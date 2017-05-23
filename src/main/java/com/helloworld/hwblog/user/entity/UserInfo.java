@@ -2,16 +2,21 @@ package com.helloworld.hwblog.user.entity;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
+
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity(name="UserInfo")
 public class UserInfo {
 	@Id
+	@GeneratedValue(generator = "uid")
+    @GenericGenerator(name = "uid",strategy = "native")
 	private int id;
 	private String nickName;
 	private String icon;
@@ -21,11 +26,10 @@ public class UserInfo {
 	private String address;
 	private String qqAcount;
 	private String hobby;
-	
 	private String username;
 	private int subNumber;
-
-    public int getId() {
+	
+	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
@@ -99,9 +103,22 @@ public class UserInfo {
 		this.username = username;
 		this.subNumber = subNumber;
 	}
+	
+	public UserInfo(String nickName, String icon, int sex, Date birthday, String address, String qqAcount,
+			String hobby) {
+		super();
+		this.nickName = nickName;
+		this.icon = icon;
+		this.sex = sex;
+		this.birthday = birthday;
+		this.address = address;
+		this.qqAcount = qqAcount;
+		this.hobby = hobby;
+	}
 	public UserInfo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
 }
+

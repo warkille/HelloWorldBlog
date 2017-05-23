@@ -29,8 +29,8 @@ public class RegistoneAction implements ModelDriven<RegisteoneModel>{
 	}
 
 	public String registeone(){
-		System.out.println(reisgtone);
-		System.out.println(getModel());
+		//System.out.println(reisgtone);
+		//System.out.println(getModel());
 		usersevice.regist(getModel());
 		return "success";
 	}

@@ -2,6 +2,8 @@ package com.helloworld.hwblog.user.service.impl;
 
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,39 +34,38 @@ public class UserSeviceImpl implements UserService {
 	@Override
 	public boolean regist(RegisteoneModel resgite) {
 		// TODO Auto-generated method stub
-		//�ж������Ƿ���ͬ
+		//判断重复密码是否相同
 		if(!resgite.getPassword().equals(resgite.getRepassword())) return false;
-		//�ж��Ƿ��Ѿ�ע��
+		//是否同名
 		if(useraccoundao.getAcUser(resgite.getUsername(),resgite.getPassword())!=null) return false;
 		
-		// 1 �ж���֤���Ƿ���ȷ
-				// ��ÿͻ�����֤��
-				// ���session��֤��
+		// 
 				/*String checkcode_session = (String) request.getSession().getAttribute(
 						"checkcode_session");
 				request.getSession().removeAttribute("checkcode_session");
 				if (resgite.getCheckcode() == null || !resgite.getCheckcode().equals(checkcode_session)) {
-					// ��֤�����
-					request.setAttribute("msg", "��֤���������");
+					// 验证码错误
+					request.setAttribute("msg", "验证码错误");
 					return false;
 				} */
 				else {
-					// ��֤��ok
-					// 2 ��װform���ݵ� javabean
+					
 					UserAccount useraccount=new UserAccount();
 					useraccount.setUsername(resgite.getUsername());
 					useraccount.setPassword(resgite.getPassword());
 					useraccount.setEmail(resgite.getEmail());		
 					useraccoundao.addAcUser(useraccount);
-					//��ʼ��һ��userinfo
-					UserInfo userinfo=new UserInfo( resgite.getUsername(), "ͷ��", 1,
-							new Date(), "location blog", null, "����",
+					//
+					UserInfo userinfo=new UserInfo( resgite.getUsername(), "icon_phtot", 1,
+							new Date(), "location blog", null, "basketball",
 							resgite.getUsername(),0);
 					  userinfodao.addInUser(userinfo);
-		             //����username��userinfo��������Ϣ,���Ҵ���session��
+		            
 		              userinfo= userinfodao.getInUser(resgite.getUsername());
-		              //����Ϣ������session��
-		              ServletActionContext.getRequest().setAttribute("reginfo", userinfo);
+
+		              HttpServletRequest request= ServletActionContext.getRequest();
+		              request.getSession().setAttribute("reginfo", userinfo);
+		         
 		               return true;
 					}
 		
@@ -75,7 +76,17 @@ public class UserSeviceImpl implements UserService {
 	@Override
 	public boolean regist2(RegistetwoModel resgite) {
 		// TODO Auto-generated method stub
-		return false;
+		//获取第一个model
+	
+		HttpServletRequest request= ServletActionContext.getRequest();
+        request.getSession().getAttribute("reginfo");
+        //把获得的session变为一个对象
+        UserInfo userinfotwo=(UserInfo)request.getSession().getAttribute("reginfo");
+		userinfodao.updateInUser(new UserInfo(resgite.getNickName(),resgite.getIcon(),resgite.getSex(),
+				resgite.getBirthday(),resgite.getAddress(),resgite.getQqAcount(),
+				resgite.getHobby(),userinfotwo.getUsername(),0));
+		//System.out.println("userInfo"+userinfotwo);
+		return true;
 	}
 
 	@Override
@@ -83,15 +94,12 @@ public class UserSeviceImpl implements UserService {
 		 // 传递用户名 和密码 到DAO
 		//return userdao.getUser(login.getUsername(),login.getPassword());
 		 UserAccount user=useraccoundao.getAcUser(login.getUsername(),login.getPassword());
-		 ServletActionContext.getRequest().setAttribute("userac", user);
-	        if(user==null) 
-	        	{
-	        	return false;
-	        	}
-	        	
-	        else{
-	        return true;
-	        }
+		 if(user!=null)
+		 return true;
+		 else {
+			return false;
+		}
+	       
 	}
 
 }

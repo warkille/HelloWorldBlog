@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>Insert title here</title>
 </head>
 <body>
- <form action="registeone" method="post">
+ <form action="./user/registeone.action" method="post">
     <!--  <input type="hidden" name="method:registeone"> -->
     	<table>
 			<tr>
@@ -31,12 +31,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<td><input type="text" name="email" /></td>
 			</tr>
 			
-			<tr>
+			<!-- <tr>
 				<td>验证码</td>
 				<td><input type="text" name="checkcode" /><img id="myimg"
 					src="../src/com/helloworld/blog/user/controller/CheckCodeAction.checkcodes" style="cursor: pointer;" onclick="change();" /></td>
 			   </tr> 
-			<tr>
+			<tr> -->
 				<td><input type="submit" value="下一步" /></td>
 				<td>
 					<!-- 登陆 链接登陆页面 ，返回  返回之前页面 --> <input type="button" value="返回"

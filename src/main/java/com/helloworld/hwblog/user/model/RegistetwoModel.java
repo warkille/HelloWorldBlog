@@ -67,5 +67,10 @@ public class RegistetwoModel {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	@Override
+	public String toString() {
+		return "RegistetwoModel [nickName=" + nickName + ", icon=" + icon + ", sex=" + sex + ", birthday=" + birthday
+				+ ", address=" + address + ", qqAcount=" + qqAcount + ", hobby=" + hobby + "]";
+	}
 	
 }
